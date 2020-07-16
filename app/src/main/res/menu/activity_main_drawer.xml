@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_timetable"
+            android:icon="@drawable/ic_baseline_calendar"
+            android:title="@string/menu_timetable" />
+        <item
+            android:id="@+id/nav_rooms"
+            android:icon="@drawable/ic_baseline_meeting_room"
+            android:title="@string/menu_rooms" />
+
+        <item
+            android:id="@+id/nav_grades"
+            android:icon="@drawable/ic_baseline_grade"
+            android:title="@string/menu_grades" />
+
+        <item
+            android:id="@+id/nav_exams"
+            android:icon="@drawable/ic_file_document_edit"
+            android:title="@string/menu_exams" />
+
+        <item
+            android:id="@+id/nav_food"
+            android:icon="@drawable/ic_baseline_fastfood"
+            android:title="@string/menu_food" />
+    </group>
+</menu>

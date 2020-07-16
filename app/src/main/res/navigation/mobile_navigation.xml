@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="ml.raketeufo.thiunofficial.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_timetable"
+        android:name="ml.raketeufo.thiunofficial.ui.timetable.TimetableFragment"
+        android:label="@string/menu_timetable"
+        tools:layout="@layout/fragment_timetable" />
+
+    <fragment
+        android:id="@+id/nav_rooms"
+        android:name="ml.raketeufo.thiunofficial.ui.rooms.RoomsFragment"
+        android:label="@string/menu_rooms"
+        tools:layout="@layout/fragment_rooms" />
+
+    <fragment
+        android:id="@+id/nav_grades"
+        android:name="ml.raketeufo.thiunofficial.ui.grades.GradesFragment"
+        android:label="@string/menu_grades"
+        tools:layout="@layout/fragment_grades" />
+
+    <fragment
+        android:id="@+id/nav_exams"
+        android:name="ml.raketeufo.thiunofficial.ui.exams.ExamsFragment"
+        android:label="@string/menu_exams"
+        tools:layout="@layout/fragment_exams" />
+
+    <fragment
+        android:id="@+id/nav_food"
+        android:name="ml.raketeufo.thiunofficial.ui.mensa.MensaFragment"
+        android:label="@string/menu_food"
+        tools:layout="@layout/fragment_mensa" />
+</navigation>

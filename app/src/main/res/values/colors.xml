@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default Android -->
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="white">#ffffff</color>
+    <color name="muddywhite">#f9f9f9</color>
+    <color name="muddyblack">#0f0f0f</color>
+    <color name="grey">#607D8B</color>
+
+    <!-- THI Design -->
+    <color name="thigrey">#575756</color>
+    <color name="thiblue">#025B9C</color>
+    <color name="thibluedark">#005a9b</color>
+    <color name="thibluedarker">#003b66</color>
+    <color name="thiyellow">#96be00</color>
+    <color name="thigreen">#009664</color>
+    <color name="thired">#e6320f</color>
+    <color name="thiorange">#F08200</color>
+    <color name="thiyellowit">#D7D700</color>
+    <color name="thiburgundy">#871932</color>
+    <color name="thilightblue">#4ab3ff</color>
+
+
+    <!-- Grade Groups -->
+    <color name="grade_superb">#2196F3</color>
+    <color name="grade_super">#4CAF50</color>
+    <color name="grade_good">#CDDC39</color>
+    <color name="grade_ok">#FFEB3B</color>
+    <color name="grade_enough">#FF9800</color>
+    <color name="grade_failed">#f44336</color>
+    <color name="grade_unknown">@color/grey</color>
+
+    <color name="card_background">@color/muddywhite</color>
+    <color name="choosen_accent">@color/thigreen</color>
+
+</resources>

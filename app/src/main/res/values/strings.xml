@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">THI Unofficial</string>
+    <string name="app_title">THI App\nUnofficial</string>
+    <string name="party_easter_egg">It\'s Party Time 🎉\nLong Click to Continue…</string>
+    <string name="title_activity_login">Login</string>
+    <string name="prompt_email">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must not be empty</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">{{firstname}}</string>
+    <string name="nav_header_subtitle">{{username}}</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_timetable">Timetable</string>
+    <string name="menu_rooms">Rooms</string>
+    <string name="menu_grades">Grades</string>
+    <string name="menu_exams">Exams</string>
+    <string name="menu_food">Mensa</string>
+    <string name="automatic_login_help_title">About Automatic Login</string>
+    <string name="automatic_login_help_message">Your account credential will be persisted in the Android Account-Manager if you like.\n\nOtherwise your have to enter the password nearly every two hours.</string>
+    <string name="close">Close</string>
+    <string name="account_type">thi.primuss.student.account</string>
+    <string name="account_label">THI Primuss Student</string>
+
+    <!-- About Page -->
+    <string name="aboutLibraries_description_name">@string/app_name</string>
+    <string name="aboutLibraries_description_showIcon">true</string>
+    <string name="aboutLibraries_description_showVersion">true</string>
+    <string name="aboutLibraries_description_text">
+        <![CDATA[
+        This is an unofficial THI Application!<br/>
+        It also uses a Proxy-Server to communicate with the original backend.
+        The proxy maps it to a more RESTy-Interface.<br/><br/>
+        The whole project is not associated to Technische Hochschule Ingolstadt!<br/>
+        <br/>
+        <a href="https://github.com/cs8898/THI-App-Unofficial">App GitHub</a>
+        <a href="https://github.com/cs8898/THI-REST-Bridge">REST-Bridge GitHub</a>
+        <a href="https://github.com/cs8898/THI-REST-API-Client">API-Client GitHub</a>
+        ]]>
+    </string>
+
+    <!-- Grades -->
+    <string name="grade_superb">ausgezeichnet</string>
+    <string name="grade_super">sehr gut</string>
+    <string name="grade_good">gut</string>
+    <string name="grade_ok">befriedigend</string>
+    <string name="grade_enough">ausreichend</string>
+    <string name="grade_failed">ungenügend</string>
+    <string name="grade_unknown">unbekannt</string>
+    <string name="action_about">About</string>
+    <string name="action_logout">Logout</string>
+    <string name="exam_during_semester">exam is during semester</string>
+</resources>

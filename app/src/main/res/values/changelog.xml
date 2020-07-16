@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="aboutLibraries_description_special3_name">Changelog</string>
+    <string name="aboutLibraries_description_special3_text">
+        <![CDATA[
+        <i>Version 1.0.0</i><br />
+        - Something new ;)<br />
+        - Oo text :D]]>
+    </string>
+</resources>
