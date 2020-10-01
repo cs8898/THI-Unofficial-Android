@@ -2,31 +2,28 @@ package ml.raketeufo.thiunofficial;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
 import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-import com.mikepenz.aboutlibraries.LibsBuilder;
-
-import androidx.lifecycle.ViewModelProviders;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import ml.raketeufo.thiunofficial.data.LoginDataSource;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+import com.mikepenz.aboutlibraries.LibsBuilder;
+
 import ml.raketeufo.thiunofficial.data.LoginRepository;
 import ml.raketeufo.thiunofficial.helpers.AccountManagerHelper;
-import ml.raketeufo.thiunofficial.ui.login.LoginViewModel;
-import ml.raketeufo.thiunofficial.ui.login.LoginViewModelFactory;
+import ml.raketeufo.thiunofficial.helpers.SyncScheduleHelper;
+import ml.raketeufo.thiunofficial.sync.CalendarSyncLogic;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SyncScheduleHelper.sync(this);
+        SyncScheduleHelper.schedule(this);
+
         loginRepository = LoginRepository.getInstance(this.getApplicationContext());
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);

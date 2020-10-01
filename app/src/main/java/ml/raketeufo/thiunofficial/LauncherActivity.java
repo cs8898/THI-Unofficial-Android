@@ -1,6 +1,6 @@
 package ml.raketeufo.thiunofficial;
 
-import android.app.Activity;
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.justadeveloper96.permissionhelper.PermissionHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +29,10 @@ import ml.raketeufo.thiunofficial.ui.login.LoginResult;
 import ml.raketeufo.thiunofficial.ui.login.LoginViewModel;
 import ml.raketeufo.thiunofficial.ui.login.LoginViewModelFactory;
 
-public class LauncherActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
+public class LauncherActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, PermissionHelper.PermissionsListener {
 
+    private static final String[] NEEDED_PERMISSIONS = {Manifest.permission.WRITE_CALENDAR, Manifest.permission.READ_CALENDAR};
+    private static final int PERMISSION_REQUEST_CODE = 148421;
     final List<Integer> availableColors = new ArrayList<>();
     final Random random = new Random();
     private ImageView logoView;
@@ -37,6 +41,7 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
     private boolean ready;
     private View launcherLayout;
     private boolean needsLogin;
+    private PermissionHelper permissionHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +60,9 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         launcherLayout = findViewById(R.id.launcherLayout);
         launcherLayout.setOnClickListener(this);
         launcherLayout.setOnLongClickListener(this);
+
+        permissionHelper = new PermissionHelper(this);
+        permissionHelper.setListener(this);
     }
 
     @Override
@@ -63,7 +71,8 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         wasClicked = false;
         ready = false;
         needsLogin = false;
-        init();
+        //init();
+        permissionHelper.requestPermission(NEEDED_PERMISSIONS, PERMISSION_REQUEST_CODE);
     }
 
     private void init() {
@@ -82,6 +91,10 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
                 }
             });
             loginViewModel.handleAutoLogin();
+        }else{
+            needsLogin = true;
+            ready = true;
+            new Handler().postDelayed(LauncherActivity.this::start, 300);
         }
     }
 
@@ -130,5 +143,16 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         wasClicked = false;
         start();
         return false;
+    }
+
+    @Override
+    public void onPermissionGranted(int request_code) {
+        init();
+    }
+
+    @Override
+    public void onPermissionRejectedManyTimes(@NonNull List<String> rejectedPerms, int request_code) {
+        Snackbar.make(launcherLayout, "You Rejected Permissions, not all Functionality is Possible!", BaseTransientBottomBar.LENGTH_LONG).show();
+        init();
     }
 }

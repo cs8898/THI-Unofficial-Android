@@ -28,6 +28,8 @@
     <string name="automatic_login_help_message">Your account credential will be persisted in the Android Account-Manager if you like.\n\nOtherwise your have to enter the password nearly every two hours.</string>
     <string name="close">Close</string>
     <string name="account_type">thi.primuss.student.account</string>
+    <string name="token_type">ml.raketeufo.restbridge.accesstoken</string>
+    <string name="stub_provider_authorities">ml.raketeufo.thiunofficial.stubprovider</string>
     <string name="account_label">THI Primuss Student</string>
 
     <!-- About Page -->
@@ -58,4 +60,6 @@
     <string name="action_about">About</string>
     <string name="action_logout">Logout</string>
     <string name="exam_during_semester">exam is during semester</string>
+    <string name="provider_label_calendar_sync">Calendar Sync</string>
+    <string name="calendar_display_name">THI Unofficial</string>
 </resources>

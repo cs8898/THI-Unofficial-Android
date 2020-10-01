@@ -65,6 +65,9 @@ dependencies {
     // API from Jitpack
     implementation 'com.github.cs8898:THI-REST-API_Retrofit:master-SNAPSHOT'
 
+    //Permission Helper
+    implementation 'com.justadeveloper96.android:permissionhelper:1.1.2'
+
     // EventBus
     //implementation 'org.greenrobot:eventbus:3.2.0'
 

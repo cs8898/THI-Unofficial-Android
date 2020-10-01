@@ -39,6 +39,10 @@ public class TimetableEvent implements WeekViewDisplayable<TimetableEvent> {
     EventType eventType = EventType.UNKNOWN;
     Object eventPayload;
 
+    public boolean isAllDay() {
+        return isAllDay;
+    }
+
     public enum EventType {
         UNKNOWN(Object.class),
         SPECIAL(SpecialEvent.class),
@@ -182,7 +186,7 @@ public class TimetableEvent implements WeekViewDisplayable<TimetableEvent> {
 
         WeekViewEvent.Builder<TimetableEvent> builder = new WeekViewEvent.Builder<TimetableEvent>(this);
         builder
-                .setId(title.hashCode() * 100_000L + startTime.toEpochSecond(ZoneOffset.UTC))
+                .setId(this.getId())
                 .setTitle(title)
                 .setStartTime(LocalDateTimeHelper.localDateTimeToCalendar(startTime, ZoneId.of("Europe/Berlin")))
                 .setEndTime(LocalDateTimeHelper.localDateTimeToCalendar(endTime, ZoneId.of("Europe/Berlin")))
@@ -193,5 +197,9 @@ public class TimetableEvent implements WeekViewDisplayable<TimetableEvent> {
         }
 
         return builder.build();
+    }
+
+    public long getId() {
+        return 99277L * title.hashCode() + 42787L * startTime.toEpochSecond(ZoneOffset.UTC) + (isAllDay ? 43L : 61L);
     }
 }

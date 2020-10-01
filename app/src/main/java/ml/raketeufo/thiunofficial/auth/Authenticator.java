@@ -28,12 +28,12 @@ public class Authenticator extends AbstractAccountAuthenticator {
     @Override
     public Bundle addAccount(AccountAuthenticatorResponse response, String accountType, String authTokenType, String[] requiredFeatures, Bundle options) throws NetworkErrorException {
         final Intent intent = new Intent(mContext, LoginActivity.class);
-
+        AccountManagerHelper accountManagerHelper = AccountManagerHelper.get(mContext);
         // This key can be anything. Try to use your domain/package
-        intent.putExtra(AccountManagerHelper.ACCOUNT_TYPE, accountType);
+        intent.putExtra(accountManagerHelper.ACCOUNT_TYPE, accountType);
 
         // This key can be anything too. It's just a way of identifying the token's type (used when there are multiple permissions)
-        intent.putExtra(AccountManagerHelper.TOKEN_TYPE, authTokenType);
+        intent.putExtra(accountManagerHelper.TOKEN_TYPE, authTokenType);
 
         // This key can be anything too. Used for your reference. Can skip it too.
         intent.putExtra("is_adding_new_account", true);
@@ -76,8 +76,8 @@ public class Authenticator extends AbstractAccountAuthenticator {
         // an intent to display our AuthenticatorActivity which is the AccountsActivity in my case.
         final Intent intent = new Intent(mContext, LoginActivity.class);
         intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
-        intent.putExtra(AccountManagerHelper.ACCOUNT_TYPE, account.type);
-        intent.putExtra(AccountManagerHelper.TOKEN_TYPE, authTokenType);
+        intent.putExtra(amHelper.ACCOUNT_TYPE, account.type);
+        intent.putExtra(amHelper.TOKEN_TYPE, authTokenType);
 
         Bundle retBundle = new Bundle();
         retBundle.putParcelable(AccountManager.KEY_INTENT, intent);

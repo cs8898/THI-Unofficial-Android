@@ -5,15 +5,19 @@ import android.accounts.AccountManager;
 import android.content.Context;
 import android.widget.Toast;
 
+import ml.raketeufo.thiunofficial.R;
+
 public class AccountManagerHelper {
-    public static final String ACCOUNT_TYPE = "thi.primuss.student.account";
-    public static final String TOKEN_TYPE = "ml.raketeufo.restbridge.accesstoken";
+    public final String ACCOUNT_TYPE;
+    public final String TOKEN_TYPE;
 
     private final AccountManager accountManager;
     private final Context context;
 
     private AccountManagerHelper(Context context) {
         this.context = context;
+        this.ACCOUNT_TYPE = context.getString(R.string.account_type);
+        this.TOKEN_TYPE = context.getString(R.string.token_type);
         this.accountManager = AccountManager.get(context);
     }
 
@@ -27,6 +31,14 @@ public class AccountManagerHelper {
             return accounts[0];
         } else if (accounts.length > 1) {
             Toast.makeText(this.context, "Whoops Found Too Many Accounts...", Toast.LENGTH_LONG).show();
+        }
+        return null;
+    }
+
+    public String getType() {
+        Account account = getStoredAccount();
+        if (account != null) {
+            return account.type;
         }
         return null;
     }
@@ -98,8 +110,12 @@ public class AccountManagerHelper {
 
     public void logout() {
         Account account = getStoredAccount();
-        if(account != null){
+        if (account != null) {
             accountManager.removeAccountExplicitly(account);
         }
+    }
+
+    public Account getAccount() {
+        return getStoredAccount();
     }
 }
