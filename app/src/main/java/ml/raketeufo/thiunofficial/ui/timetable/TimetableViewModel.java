@@ -2,6 +2,7 @@ package ml.raketeufo.thiunofficial.ui.timetable;
 
 import android.app.Application;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -52,6 +53,7 @@ public class TimetableViewModel extends AndroidViewModel {
                 }
 
                 Response<ExamsResponse> examsResponse = apiHelper.getApi().userExamsGet().execute();
+                Log.d("ExamsResp", examsResponse.toString());
                 ExamsResponse examsRes = examsResponse.body();
                 if (examsRes.isOk()) {
                     List<Exam> exams = examsRes.getExams();
