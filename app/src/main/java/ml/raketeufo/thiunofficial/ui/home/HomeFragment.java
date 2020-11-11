@@ -7,6 +7,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,6 +47,15 @@ public class HomeFragment extends Fragment {
         timetableViewModel =
                 ViewModelProviders.of(this).get(TimetableViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        LinearLayout homeLinearLayout = root.findViewById(R.id.home_linear_layout);
+
+        //Load Upcoming Card
+        View upcomingCard = inflater.inflate(R.layout.card_upcoming_events, homeLinearLayout);
+
+        //LOAD User Card
+        View userCard = inflater.inflate(R.layout.card_user, homeLinearLayout);
+
         final TextView userVorname = root.findViewById(R.id.user_firstName);
         final TextView userName = root.findViewById(R.id.user_name);
         final TextView userMatr = root.findViewById(R.id.user_matr);
@@ -96,6 +106,20 @@ public class HomeFragment extends Fragment {
                     .toArray(TimetableEvent[]::new);
             mUpcomingAdapter.setDataset(upcomingEvents);
         });
+
+        View myNews = inflater.inflate(R.layout.card_news, homeLinearLayout, false);
+        TextView bodyView = myNews.findViewById(R.id.news_Body);
+        bodyView.setText(Html.fromHtml(bodyView.getText().toString(), 0));
+        homeLinearLayout.addView(myNews);
+
+        View myNews2 = inflater.inflate(R.layout.card_news, homeLinearLayout,false);
+        TextView titleView2 = myNews2.findViewById(R.id.news_Title);
+        titleView2.setText("Hello from Duke");
+        TextView dateView2 = myNews2.findViewById(R.id.news_Date);
+        dateView2.setText("Some Crazy Date");
+        TextView bodyView2 = myNews2.findViewById(R.id.news_Body);
+        bodyView2.setText(Html.fromHtml("<h1>Hallo Welt!</h1><p>Ich binn eine kleine Nachricht, welche direkt in Java generiert wurde\uD83D\uDC31\u200D\uD83D\uDCBB.</p>", 0));
+        homeLinearLayout.addView(myNews2);
 
         return root;
     }
