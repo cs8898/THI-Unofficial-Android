@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.cardview.widget.CardView;
 
 import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.format.FormatStyle;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -32,6 +33,8 @@ import ml.raketeufo.thiunofficial.helpers.ExamHelper;
 public class ExamsListAdapter extends RecyclerView.Adapter<ExamsListAdapter.GradesViewHolder> {
     private Exam[] mDataset;
     private Context context;
+
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -85,7 +88,7 @@ public class ExamsListAdapter extends RecyclerView.Adapter<ExamsListAdapter.Grad
             holder.dateView.setText("");
             holder.dateView.setVisibility(View.GONE);
         } else {
-            holder.dateView.setText(exam.getZeit().format(DateTimeFormatter.ISO_DATE_TIME));
+            holder.dateView.setText(exam.getZeit().format(formatter));
             holder.dateView.setVisibility(View.VISIBLE);
         }
         SpannableStringBuilder spannableBuilder = new SpannableStringBuilder();

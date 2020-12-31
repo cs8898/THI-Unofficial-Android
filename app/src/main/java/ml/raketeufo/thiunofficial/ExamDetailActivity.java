@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.format.FormatStyle;
 
 import ml.raketeufo.thirestbridge.api.model.Exam;
 import ml.raketeufo.thirestbridge.api.model.Pruefer;
@@ -22,6 +23,7 @@ public class ExamDetailActivity extends AppCompatActivity {
 
     public static final String ACTION_SHOW_DETAILS = "ExamDetail.Action_SHOW_DETAILS";
     public static final String EXTRA_EXAM = "ExamDetail.Extra_EXAM";
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class ExamDetailActivity extends AppCompatActivity {
 
         examTitleView.setText(exam.getTitel());
         if (exam.getZeit() != null)
-            examDateView.setText(exam.getZeit().format(DateTimeFormatter.ISO_DATE_TIME));
+            examDateView.setText(exam.getZeit().format(formatter));
         else{
             examDateView.setText(getString(R.string.exam_during_semester));
         }
@@ -75,7 +77,7 @@ public class ExamDetailActivity extends AppCompatActivity {
             examSeatText.setText(locationText);
             examSeatText.setVisibility(View.VISIBLE);
         } else {
-            examSeatText.setVisibility(View.GONE);
+            examSeatText.setVisibility(View.INVISIBLE);
         }
 
         examRoomsText.setText(TextUtils.join("\n", exam.getRooms()));

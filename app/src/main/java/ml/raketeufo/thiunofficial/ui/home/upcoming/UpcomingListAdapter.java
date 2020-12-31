@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.format.FormatStyle;
 
 import ml.raketeufo.thirestbridge.api.model.Grade;
 import ml.raketeufo.thiunofficial.R;
@@ -19,6 +20,8 @@ import ml.raketeufo.thiunofficial.ui.timetable.TimetableEvent;
 public class UpcomingListAdapter extends RecyclerView.Adapter<UpcomingListAdapter.UpcomingViewHolder> {
     private TimetableEvent[] mDataset;
     private Context context;
+
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -64,7 +67,7 @@ public class UpcomingListAdapter extends RecyclerView.Adapter<UpcomingListAdapte
         // - replace the contents of the view with that element
         TimetableEvent event = mDataset[position];
         holder.titleView.setText(event.getTitle());
-        holder.dateView.setText(event.getStartTime().format(DateTimeFormatter.ISO_DATE_TIME));
+        holder.dateView.setText(event.getStartTime().format(formatter));
         holder.locationView.setText(event.getLocation());
         holder.typeMark.setBackgroundColor(event.getColor());
     }
